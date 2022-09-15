@@ -1,0 +1,46 @@
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 10vw;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #e9ecef;
+}
+
+.navContent {
+  margin-top: 50px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.navContent > a > div {
+  padding: 10px 60px 10px 15px; 
+  margin: 0px 15px;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  border-bottom: solid 1px #adb5bd;
+}
+
+.navContent > a > div:hover {
+  color: #007fff;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  background-color: #ced4da;
+  padding: 0px 5px;
+  border-right: solid 2px#838097;
+  border-left: solid 2px #838097;
+}
+
