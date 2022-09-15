@@ -1,9 +1,27 @@
 import styles from './ProfileList.module.css'
+import ProfileCard from '../ProfileCard/ProfileCard'
 
-const ProfileList = () => {
+const ProfileList = props => {
+  const profiles = props.profiles
+
   return (
     <>
     <h1>ProfileListComponent</h1>
+    <>
+      <h1>Hello. This is a list of all the profiles.</h1>
+      {profiles.length ? 
+        <>
+          {profiles.map(profile =>
+            <ProfileCard 
+              key={profile._id} 
+              profile={profile}
+            />
+          )}
+        </>
+      :
+        <p>No profiles yet</p>
+      }
+    </>
     </>
   )
 }

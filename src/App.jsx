@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -6,7 +6,11 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import Profile from './pages/Profile/Profile'
+import Games from './pages/Games/Games'
+import AllPosts from './pages/AllPosts/AllPosts'
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -22,6 +26,16 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  const [profiles, setProfiles] = useState([])
+
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      const profileData = await profileService.getAllProfiles()
+      setProfiles(profileData)
+    }
+    fetchProfiles()
+  }, [])
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -36,8 +50,16 @@ const App = () => {
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
         <Route
-          path="/profiles"
-          element={user ? <Profiles /> : <Navigate to="/login" />}
+          path="/allPosts"
+          element={user ? <AllPosts /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/games"
+          element={<Games />}
+        />
+        <Route
+          path="/profile"
+          element={user ? <Profile profiles={profiles}/> : <Navigate to="/login" />}
         />
         <Route
           path="/changePassword"
