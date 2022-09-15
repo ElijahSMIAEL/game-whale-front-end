@@ -22,10 +22,14 @@ const NavBar = ({ user, handleLogout }) => {
     setShowLess(true)
   }
 
-  let contentAnimatedStyle = useSpring({
+  const navAnimatedStyle = useSpring({
     display: "flex",
     width: showLess ? 0 : bounds.width,
     overflow: "hidden"
+  })
+
+  const chevAnimatedStyle = useSpring({
+    transform: showLess ? 'rotate(0deg)' : 'rotate(180deg)',
   })
 
   return (
@@ -33,7 +37,7 @@ const NavBar = ({ user, handleLogout }) => {
       {user ?
         <nav className={styles.navContainer} onMouseEnter={handleMouseOn} onMouseLeave={handleMouseOff}>
           <div className={styles.linkContainer}>
-            <animated.div style={contentAnimatedStyle}>
+            <animated.div style={navAnimatedStyle}>
               <div ref={ref}>
                 <div className={styles.navContent}>
                   <Link to="" onClick={handleLogout}><div>Log Out</div></Link>
@@ -46,16 +50,19 @@ const NavBar = ({ user, handleLogout }) => {
             </animated.div>
           </div>
           <div onClick={handleClick} className={styles.navButton}>
-            <FontAwesomeIcon icon={faChevronCircleRight} style={{'transform': showLess ? 'rotate(0deg)' : 'rotate(180deg)',
-            height: "40px",
-            color: "#1d3557",
-            }}/>
+            <animated.div style={chevAnimatedStyle}>
+              <FontAwesomeIcon icon={faChevronCircleRight} style={{
+                height: "45px",
+                color: '#002c66',
+              }}/>
+            </animated.div>
+            
           </div>
         </nav>
       :
         <nav className={styles.navContainer} onMouseEnter={handleMouseOn} onMouseLeave={handleMouseOff}>
           <div className={styles.linkContainer}>
-            <animated.div style={contentAnimatedStyle}>
+            <animated.div style={navAnimatedStyle}>
               <div ref={ref}>
                 <div className={styles.navContent}>
                   <Link to="/login"><div>Log In</div></Link>
@@ -65,8 +72,12 @@ const NavBar = ({ user, handleLogout }) => {
             </animated.div>
           </div>
           <div onClick={handleClick} className={styles.navButton}>
-            <FontAwesomeIcon icon={faChevronCircleRight} style={{'transform': showLess ? 'rotate(0deg)' : 'rotate(180deg)',
-            height: "30px"}}/>
+            <animated.div style={chevAnimatedStyle}>
+              <FontAwesomeIcon icon={faChevronCircleRight} style={{
+                height: "45px",
+                color: '#002c66',
+              }}/>
+            </animated.div>
           </div>
         </nav>
       }
