@@ -7,8 +7,6 @@ const ProfileList = props => {
   return (
     <>
     <h1>ProfileListComponent</h1>
-    <>
-      <h1>Hello. This is a list of all the profiles.</h1>
       {profiles.length ? 
         <>
           {profiles.map(profile =>
@@ -21,7 +19,6 @@ const ProfileList = props => {
       :
         <p>No profiles yet</p>
       }
-    </>
     </>
   )
 }
