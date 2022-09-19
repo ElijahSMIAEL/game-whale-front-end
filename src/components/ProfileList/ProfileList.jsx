@@ -1,8 +1,18 @@
 import styles from './ProfileList.module.css'
 import ProfileCard from '../ProfileCard/ProfileCard'
+import { useEffect, useState } from 'react'
+import * as profileService from '../../services/profileService'
 
 const ProfileList = props => {
-  const profiles = props.profiles
+  const [profiles, setProfiles] = useState([])
+
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      const profileData = await profileService.getAllProfiles()
+      setProfiles(profileData)
+    }
+    fetchProfiles()
+  }, [])
 
   return (
     <>
