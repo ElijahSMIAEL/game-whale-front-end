@@ -43,6 +43,7 @@ const NavBar = ({ user, handleLogout }) => {
                   <Link to="" onClick={handleLogout}><div>Log Out</div></Link>
                 <Link to="/changePassword"><div>Change Password</div></Link>
                 <Link to="/allPosts"><div>All Posts</div></Link>
+                <Link to="/addPost"><div>Add Post</div></Link>
                 <Link to="/games"><div>Games</div></Link>
                 <Link to="/profile"><div>Profile</div></Link>
                 </div>
