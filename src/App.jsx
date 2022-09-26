@@ -4,7 +4,7 @@ import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
+import AddPost from './pages/AddPost/AddPost'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Profile from './pages/Profile/Profile'
 import Games from './pages/Games/Games'
@@ -54,12 +54,16 @@ const App = () => {
           element={user ? <AllPosts /> : <Navigate to="/login" />}
         />
         <Route
+          path="/addPost"
+          element={user ? <AddPost /> : <Navigate to="/login" />}
+        />
+        <Route
           path="/games"
           element={<Games />}
         />
         <Route
           path="/profile"
-          element={user ? <Profile profiles={profiles}/> : <Navigate to="/login" />}
+          element={user ? <Profile user={user} profiles={profiles}/> : <Navigate to="/login" />}
         />
         <Route
           path="/changePassword"
