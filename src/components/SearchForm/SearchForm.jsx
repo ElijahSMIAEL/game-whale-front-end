@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from './SearchForm.module.css'
 
 const SearchForm = (props) => {
   const [formData, setFormData] = useState({
@@ -7,7 +8,7 @@ const SearchForm = (props) => {
 
   function onChange(evt) {
     handleChange(evt);
-    handleSubmit(evt);
+    // handleSubmit(evt);
   }
 
   const handleChange = evt => {
@@ -22,13 +23,14 @@ const SearchForm = (props) => {
       <div>
         <form onSubmit={handleSubmit}>
           <input 
+            className={styles.gameSearch}
             name="query" 
             type="text" 
             autoComplete="off"
             value={formData.query}
+            placeholder="Search for a game..."
             onChange={onChange}
             />
-          <button type="submit">Search</button>
         </form>
       </div>
     </>

@@ -1,0 +1,16 @@
+.gameCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px black;
+  margin: 20px;
+  width: 45vw;
+  height: 45vh;
+}
+
+.backgroundImage {
+  width: 40vw;
+  height: 40vh;
+  object-fit: cover;
+}
