@@ -11,10 +11,13 @@ const Games = () => {
     const gameResults = await searchGame(formData)
     setGames(gameResults.result)
   }
+
+
   return (
     <div className={styles.pageContent}>
-      <h3>Game Search</h3>
+      <div className={styles.searchBar}>
       <SearchForm handleGameSearch={handleGameSearch} />
+      </div>
       {games ? 
         <div className={styles.gameContainer}>
           {games.map(game => 
