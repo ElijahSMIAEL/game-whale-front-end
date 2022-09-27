@@ -5,7 +5,6 @@ import AllPosts from '../AllPosts/AllPosts'
 const GameDetails = () => {
   return (
     <>
-    <h1>GameDetailsComponent</h1>
     <ProfileDetails />
     <AllPosts />
     </>

@@ -4,7 +4,6 @@ import PostDetails from '../../pages/PostDetails/PostDetails'
 const PostCard = () => {
   return (
     <>
-    <h1>PostCardComponent</h1>
     <PostDetails />
     </>
   )
