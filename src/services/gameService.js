@@ -9,7 +9,10 @@ async function searchGame(formData) {
   })
   return res.json()
 }
+async function getGameDetails(gameData) {
 
+}
 export {
-  searchGame
+  searchGame,
+  getGameDetails
 }

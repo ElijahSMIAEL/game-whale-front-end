@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const GameCard = (props) => {
   return (
     <>
-    <Link to={`/game/${props.game.name}`}>
+    <Link to={`/game/${props.game.id}`}>
       {props.game.name}
     </Link>
     <GameDetails />
