@@ -20,7 +20,7 @@ const Games = () => {
           {games.map(game => 
             <GameCard 
               game={game}
-              key={game.index}
+              key={game.id}
             />
           )}
         </div>
