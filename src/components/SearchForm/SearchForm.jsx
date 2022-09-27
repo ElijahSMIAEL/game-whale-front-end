@@ -5,6 +5,11 @@ const SearchForm = (props) => {
     query: '',
   })
 
+  function onChange(evt) {
+    handleChange(evt);
+    handleSubmit(evt);
+  }
+
   const handleChange = evt => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
@@ -21,7 +26,7 @@ const SearchForm = (props) => {
             type="text" 
             autoComplete="off"
             value={formData.query}
-            onChange={handleChange}
+            onChange={onChange}
             />
           <button type="submit">Search</button>
         </form>
