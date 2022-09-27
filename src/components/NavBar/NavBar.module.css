@@ -5,14 +5,15 @@
   width: 10vw;
   margin: 0;
   padding: 0;
-  position: absolute;
+  position: fixed;
   left: 0;
+  z-index: 1;
 }
 
 .linkContainer {
   display: flex;
   flex-direction: column;
-  background-color: #e9ecef;
+  background-color: #003356;
 }
 
 .navContent {
@@ -23,6 +24,7 @@
 }
 
 .navContent > a > div {
+  color: white;
   padding: 10px 60px 10px 15px; 
   margin: 0px 15px;
   display: flex;
@@ -38,7 +40,8 @@
 .navButton {
   display: flex;
   align-items: center;
-  background-color: #ced4da;
+  background-color: #83b0e1;
+  ;
   padding: 0px 5px;
   border-right: solid 2px#838097;
   border-left: solid 2px #838097;
