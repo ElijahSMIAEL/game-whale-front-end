@@ -2,20 +2,20 @@ import styles from './Games.module.css'
 import { useState } from 'react'
 import GameCard from '../../components/GameCard/GameCard'
 import SearchForm from '../../components/SearchForm/SearchForm'
-
+import { searchGame } from '../../services/gameService'
 
 const Games = () => {
-  const [games,setGames] = useState([])
+  const [games, setGames] = useState([])
 
   const handleGameSearch = async formData => {
-    const gameResults = await handleGameSearch(formData)
-    setGames(gameResults.results)
+    const gameResults = await searchGame(formData)
+    setGames(gameResults.result)
   }
   return (
     <>
       <h3>Game Search</h3>
       <SearchForm handleGameSearch={handleGameSearch} />
-      {games.length ? 
+      {games ? 
         <>
           {games.map(game => 
             <GameCard 
