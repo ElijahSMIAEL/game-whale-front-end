@@ -12,9 +12,8 @@ const Games = () => {
     setGames(gameResults.result)
   }
 
-
   return (
-    <div className={styles.pageContent}>
+    <div className={styles.pageContent} id="content">
       <div className={styles.searchBar}>
       <SearchForm handleGameSearch={handleGameSearch} />
       </div>

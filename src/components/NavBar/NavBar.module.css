@@ -7,7 +7,7 @@
   padding: 0;
   position: fixed;
   left: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .linkContainer {
@@ -41,7 +41,6 @@
   display: flex;
   align-items: center;
   background-color: #83b0e1;
-  ;
   padding: 0px 5px;
   border-right: solid 2px#838097;
   border-left: solid 2px #838097;

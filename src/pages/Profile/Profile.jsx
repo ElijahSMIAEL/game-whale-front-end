@@ -5,7 +5,7 @@ import { useReducer } from 'react'
 
 const Profile = (props) => {
   return (
-    <div>
+    <div id="content">
     <h1>{props.user.name}'s Profile Page</h1>
     <ProfileSettings user={props.user}/>
     <ProfileList profiles={props.profiles}/>

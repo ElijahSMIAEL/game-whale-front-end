@@ -3,9 +3,11 @@
   text-align: center;
   border-radius: 30px;
   border: solid 3px #002c66;
-  margin-left: 59px;
+  position: sticky;
+  top: 1vh;
 }
 
 .gameSearch:focus {
   outline: none;
 }
+

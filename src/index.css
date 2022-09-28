@@ -24,11 +24,8 @@ main {
   flex-direction: row;
   height: 100vh;
   margin: 0;
+  z-index: 0;
   justify-content: center;
-}
-
-.container {
-
 }
 
 code {
