@@ -3,17 +3,18 @@ import ProfileDetails from '../ProfileDetails/ProfileDetails'
 import AllPosts from '../AllPosts/AllPosts'
 import { useEffect, useState } from 'react'
 import { getGameDetails } from '../../services/gameService'
-import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const GameDetails = () => {
   const [gameDetails, setGameDetails] = useState({})
-  const { gameName } = useParams()
+  const gameName = useLocation()
+  const game = gameDetails.game
+
 
   useEffect(() => {
     const fetchGameDetails = async () => {
-      const gameData = await getGameDetails(gameName)
+      const gameData = await getGameDetails(gameName.pathname)
       setGameDetails(gameData)
-      console.log(gameData)
     }
     fetchGameDetails()
 
@@ -22,7 +23,7 @@ const GameDetails = () => {
   return (
     <>
     <h3>Game Details</h3>
-    <p>{gameDetails.name}</p>
+    <p>{game.name}</p>
     <ProfileDetails />
     <AllPosts />
     </>
