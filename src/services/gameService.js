@@ -10,7 +10,12 @@ async function searchGame(formData) {
   return res.json()
 }
 async function getGameDetails(gameData) {
-
+  const res = await fetch(`${BASE_URL}/api/games/search/${gameData}`, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  return res.json()
 }
 export {
   searchGame,

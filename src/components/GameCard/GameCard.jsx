@@ -6,7 +6,7 @@ const GameCard = (props) => {
   return (
     <div className={styles.gameCard}>
       <img src={props.game.background_image} alt="Game" className={styles.backgroundImage}/>
-    <Link to={`/game/${props.game.id}`}>
+    <Link to={`/games/${props.game.id}`}>
       {props.game.name}
     </Link>
     </div>
