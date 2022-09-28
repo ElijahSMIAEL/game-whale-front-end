@@ -1,8 +1,11 @@
 .gameContainer {
   margin-top: 10vh;
+  width: 65vw;
   display: flex;
   justify-items: center;
+  align-items: center;
   flex-direction: column;
+  background-color: #00253e;
 }
 
 .searchBar {
