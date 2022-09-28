@@ -8,9 +8,11 @@
 }
 
 .backgroundImage {
-  width: 40vw;
-  height: 40vh;
+  margin-top: 100px;
+  width: 65vw;
+  height: auto;
   object-fit: cover;
+  background-size: cover;
 }
 
 .description {
