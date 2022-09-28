@@ -4,26 +4,34 @@ import AllPosts from '../AllPosts/AllPosts'
 import { useEffect, useState } from 'react'
 import { getGameDetails } from '../../services/gameService'
 import { useLocation } from 'react-router-dom'
+import parse from 'html-react-parser'
+
 
 const GameDetails = () => {
-  const [gameDetails, setGameDetails] = useState({})
+  const [game, setGame] = useState({})
   const gameName = useLocation()
-  const game = gameDetails.game
-
 
   useEffect(() => {
     const fetchGameDetails = async () => {
       const gameData = await getGameDetails(gameName.pathname)
-      setGameDetails(gameData)
+      setGame(gameData.game)
     }
     fetchGameDetails()
 
   },[gameName])
   
+
   return (
     <>
-    <h3>Game Details</h3>
-    <p>{game.name}</p>
+    { game.description ? 
+    <div>
+      <h3>Game Details</h3>
+      <p>{game.name}</p>
+      <div className={styles.description}>{parse(game.description)}</div>
+    </div>
+    :
+    <h1>LOADING...</h1>
+    }
     <ProfileDetails />
     <AllPosts />
     </>

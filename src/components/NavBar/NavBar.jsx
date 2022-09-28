@@ -10,6 +10,7 @@ const NavBar = ({ user, handleLogout }) => {
 
   const [showLess, setShowLess] = useState(true)
   const [ref, bounds] = useMeasure()
+  const body = document.getElementsByClassName("pageContent")
 
   function handleClick() {
     setShowLess(!showLess)

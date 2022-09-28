@@ -3,14 +3,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid 2px black;
-  margin: 20px;
-  width: 45vw;
-  height: 45vh;
+  border-bottom: solid 1px #a7d5e1;
+  margin: 0px;
+  width: 60vw;
+  height: 47vh;
 }
 
 .backgroundImage {
   width: 40vw;
   height: 40vh;
   object-fit: cover;
+}
+
+.gameCard > a {
+  color: white;
 }
