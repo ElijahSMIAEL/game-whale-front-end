@@ -11,6 +11,7 @@ import Games from './pages/Games/Games'
 import AllPosts from './pages/AllPosts/AllPosts'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
+import GameDetails from './pages/GameDetails/GameDetails'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -60,6 +61,10 @@ const App = () => {
         <Route
           path="/games"
           element={<Games />}
+        />
+          <Route
+          path="/games/:id"
+          element={<GameDetails />}
         />
         <Route
           path="/profile"

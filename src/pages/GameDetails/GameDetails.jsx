@@ -13,6 +13,7 @@ const GameDetails = () => {
     const fetchGameDetails = async () => {
       const gameData = await getGameDetails(gameName)
       setGameDetails(gameData)
+      console.log(gameData)
     }
     fetchGameDetails()
 
