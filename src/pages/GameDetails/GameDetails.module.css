@@ -1,0 +1,25 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 1px #a7d5e1;
+
+}
+
+.backgroundImage {
+  margin-top: 100px;
+  width: 65vw;
+  height: auto;
+  object-fit: cover;
+  background-size: cover;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  margin-left: 100px;
+}

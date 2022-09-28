@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { getGameDetails } from '../../services/gameService'
 import { useLocation } from 'react-router-dom'
 import parse from 'html-react-parser'
+import Platforms from '../../components/Platforms/Platforms'
 
 
 const GameDetails = () => {
@@ -24,10 +25,21 @@ const GameDetails = () => {
   return (
     <>
     { game.description ? 
-    <div>
-      <h3>Game Details</h3>
-      <p>{game.name}</p>
+    <div className={styles.container}>
+      <img src={game.background_image} alt="Game" className={styles.backgroundImage}/>
+      <h1 className={styles.game}>{game.name}</h1>
       <div className={styles.description}>{parse(game.description)}</div>
+      <h3>Rating</h3>
+        {game.rating}
+      <h3>Release Date</h3>
+        {game.released}
+      <h3>Platforms</h3>
+        {game.platforms?.map(platform =>
+          <Platforms 
+            key={platform.platform.id}
+            platform={platform}
+          />
+        )}
     </div>
     :
     <h1>LOADING...</h1>
