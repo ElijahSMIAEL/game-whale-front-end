@@ -15,6 +15,8 @@ import GameDetails from './pages/GameDetails/GameDetails'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [game,setGame] = useState({})
+  const [isBlurred, setIsBlurred] = useState(false)
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -39,7 +41,7 @@ const App = () => {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar isBlurred={isBlurred} setIsBlurred={setIsBlurred} user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -60,7 +62,7 @@ const App = () => {
         />
         <Route
           path="/games"
-          element={<Games />}
+          element={<Games isBlurred={isBlurred}/>}
         />
           <Route
           path="/games/:id"
