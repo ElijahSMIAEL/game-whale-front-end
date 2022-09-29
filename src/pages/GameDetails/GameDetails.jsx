@@ -4,13 +4,30 @@ import AllPosts from '../AllPosts/AllPosts'
 import { useEffect, useState } from 'react'
 import { getGameDetails } from '../../services/gameService'
 import { useLocation } from 'react-router-dom'
-import parse from 'html-react-parser'
+import parse, { attributesToProps } from 'html-react-parser'
 import Platforms from '../../components/Platforms/Platforms'
+import Games from '../Games/Games'
 
 
-const GameDetails = () => {
+
+const GameDetails = (props) => {
   const [game, setGame] = useState({})
   const gameName = useLocation()
+  const [formData, setFormData] = useState({
+    gameCollection: ''
+  })
+
+  const handleChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    props.handleAddGame(formData)
+  }
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -21,7 +38,6 @@ const GameDetails = () => {
 
   },[gameName])
   
-
   return (
     <>
     { game.description ? 
@@ -40,6 +56,14 @@ const GameDetails = () => {
             platform={platform}
           />
         )}
+      <form
+        className={styles.GameDetails} 
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
+      <button className="btn btn-secondary" type='submit'>Add to Collection
+        </button>
+      </form>
     </div>
     :
     <h1>LOADING...</h1>

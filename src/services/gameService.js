@@ -17,7 +17,12 @@ async function getGameDetails(gameData) {
   })
   return res.json()
 }
+
+async function addGame() {
+  
+}
 export {
   searchGame,
-  getGameDetails
+  getGameDetails,
+  addGame,
 }
