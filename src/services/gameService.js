@@ -17,7 +17,17 @@ async function getGameDetails(gameData) {
   })
   return res.json()
 }
+
+async function addGame(newGame) {
+  const res = await fetch(`${BASE_URL}/api${newGame}`, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  return res.json()
+}
 export {
   searchGame,
-  getGameDetails
+  getGameDetails,
+  addGame,
 }

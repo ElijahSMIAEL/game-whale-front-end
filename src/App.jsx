@@ -11,10 +11,12 @@ import Games from './pages/Games/Games'
 import AllPosts from './pages/AllPosts/AllPosts'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
+import * as gameService from './services/gameService'
 import GameDetails from './pages/GameDetails/GameDetails'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [game,setGame] = useState({})
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -37,6 +39,11 @@ const App = () => {
     fetchProfiles()
   }, [])
 
+  const handleAddGame = async (newGameCollection) => {
+    const newGame = await gameService.addGame(newGameCollection)
+    console.log(newGame)
+    setGame([...game,newGame])
+  }
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -64,7 +71,7 @@ const App = () => {
         />
           <Route
           path="/games/:id"
-          element={<GameDetails />}
+          element={<GameDetails handleAddGame={handleAddGame} />}
         />
         <Route
           path="/profile"

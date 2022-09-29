@@ -1,5 +1,6 @@
 import styles from './Platforms.module.css'
 const Platforms = (props) => {
+
   return (
     <>
     <div className={styles.platform}>
