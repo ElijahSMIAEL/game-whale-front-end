@@ -34,4 +34,22 @@ async function changeProfile(formData, profileId) {
   return await res.json()
 }
 
-export { getAllProfiles, addPhoto, changeProfile }
+async function handleAddGame(game, profileId) {
+  console.log(game)
+  const res = await fetch(`${BASE_URL}/${profileId}/add-game`, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(game)
+  })
+  return res.json()
+}
+
+export { 
+  getAllProfiles,
+  addPhoto,
+  changeProfile,
+  handleAddGame,
+}

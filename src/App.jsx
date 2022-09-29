@@ -66,7 +66,7 @@ const App = () => {
         />
           <Route
           path="/games/:id"
-          element={<GameDetails  />}
+          element={<GameDetails  user={user}/>}
         />
         <Route
           path="/profile"

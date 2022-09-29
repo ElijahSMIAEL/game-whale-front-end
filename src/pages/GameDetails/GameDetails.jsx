@@ -7,33 +7,14 @@ import { useLocation } from 'react-router-dom'
 import parse, { attributesToProps } from 'html-react-parser'
 import Platforms from '../../components/Platforms/Platforms'
 import Games from '../Games/Games'
-import * as gameService from '../../services/gameService'
+import * as profileService from '../../services/profileService'
 
 
 
 const GameDetails = (props) => {
   const [game, setGame] = useState({})
   const gameName = useLocation()
-  const [formData, setFormData] = useState({
-    gameCollection: ''
-  })
-
-  const handleChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleSubmit = evt => {
-    evt.preventDefault()
-    handleAddGame(formData)
-  }
-  const handleAddGame = async () => {
-    const newGame = await gameService.handleAddGame(gameName.id)
-    setGame(newGame)
-    console.log(newGame)
-  }
+  const profile = props.user.profile
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -41,10 +22,13 @@ const GameDetails = (props) => {
       setGame(gameData.game)
     }
     fetchGameDetails()
-
+  
   },[gameName])
   
-
+  const handleAddGame = async () => {
+  const newGame = await profileService.handleAddGame(game, profile)
+  }
+  
   return (
     <>
     { game.description ? 
@@ -59,22 +43,15 @@ const GameDetails = (props) => {
       <h3>Platforms</h3>
         {game.platforms?.map(platform =>
           <Platforms 
-            key={platform.platform.id}
-            platform={platform}
+          key={platform.platform.id}
+          platform={platform}
           />
-        )}
-      <form
-        className={styles.GameDetails} 
-        autoComplete="off"
-        onSubmit={handleSubmit}
-        value={formData.gameCollection}
-        onChange={handleChange}
-      >
+          )}
       <button className="btn btn-secondary"
-          onClick={()=> handleAddGame(game.id)}
-      >Add to Collection
-        </button>
-      </form>
+        onClick={()=> handleAddGame()}
+      >
+        Add to Collection
+      </button>
     </div>
     :
     <h1>LOADING...</h1>
