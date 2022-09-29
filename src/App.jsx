@@ -41,6 +41,7 @@ const App = () => {
 
   const handleAddGame = async (newGameCollection) => {
     const newGame = await gameService.addGame(newGameCollection)
+    console.log(newGame)
     setGame([...game,newGame])
   }
   return (
