@@ -4,7 +4,7 @@ import GameCard from '../../components/GameCard/GameCard'
 import SearchForm from '../../components/SearchForm/SearchForm'
 import { searchGame } from '../../services/gameService'
 
-const Games = () => {
+const Games = ({ isBlurred }) => {
   const [games, setGames] = useState([])
 
   const handleGameSearch = async formData => {
@@ -12,10 +12,12 @@ const Games = () => {
     setGames(gameResults.result)
   }
 
+  
+
   return (
     <div className={styles.pageContent} id="content">
       <div className={styles.searchBar}>
-      <SearchForm handleGameSearch={handleGameSearch} />
+      <SearchForm isBlurred={isBlurred} handleGameSearch={handleGameSearch} />
       </div>
       {games ? 
         <div className={styles.gameContainer}>
