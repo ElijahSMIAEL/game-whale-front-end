@@ -6,12 +6,11 @@ import { useState } from 'react'
 import useMeasure from 'react-use-measure'
 import { useSpring, animated } from 'react-spring'
 
-const NavBar = ({ user, handleLogout }) => {
-  const [isBlurred, setIsBlurred] = useState(false)
+const NavBar = ({ user, handleLogout, setIsBlurred, isBlurred }) => {
   const [showLess, setShowLess] = useState(true)
   const [ref, bounds] = useMeasure()
   const body = document.getElementById('content')
-
+    
 
   function handleClick() {
     setShowLess(!showLess)
@@ -68,7 +67,9 @@ const NavBar = ({ user, handleLogout }) => {
               </div>
             </animated.div>
           </div>
-          <div onClick={handleClick} className={styles.navButton} style={{boxShadow: !showLess ? "7px 0px 5px black" : "none"}}>
+          <div onClick={handleClick} className={styles.navButton} style={{boxShadow: !showLess ? "7px 0px 5px black" : "none",
+          borderLeft: !showLess ? "solid 2px white" : "none"
+          }}>
             <animated.div style={chevAnimatedStyle}>
               <FontAwesomeIcon icon={faChevronCircleRight} style={{
                 height: "45px",

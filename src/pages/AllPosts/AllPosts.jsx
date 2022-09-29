@@ -3,7 +3,7 @@ import PostCard from '../../components/PostCard/PostCard'
 
 const AllPosts = () => {
   return (
-    <div className="container">
+    <div className="container" id="content">
     <PostCard /> 
     </div>
   )

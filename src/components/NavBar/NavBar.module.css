@@ -34,7 +34,7 @@
 }
 
 .navContent > a > div:hover {
-  color: #007fff;
+  color: #ffd6ff;
 }
 
 .navButton {
@@ -42,7 +42,6 @@
   align-items: center;
   background-color: #83b0e1;
   padding: 0px 5px;
-  border-right: solid 2px#838097;
-  border-left: solid 2px #838097;
+  border-right: solid 2px#003566;
 }
 

@@ -11,6 +11,7 @@
 .searchBar {
   padding: 10px;
   display: flex;
+  height: 4vh;
   flex-direction: column;
   position: sticky;
   top: 0;

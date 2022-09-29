@@ -1,13 +1,20 @@
 .gameSearch {
   font-size: 1.5rem;
   text-align: center;
+  margin-left: 59px;
   border-radius: 30px;
   border: solid 3px #002c66;
   position: sticky;
-  top: 1vh;
+  top: 0px;
 }
 
 .gameSearch:focus {
   outline: none;
 }
 
+.animatedDiv {
+  position: fixed;
+  left: 30vw;
+  top: 1vh;
+  
+}
