@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom'
 import parse, { attributesToProps } from 'html-react-parser'
 import Platforms from '../../components/Platforms/Platforms'
 import Games from '../Games/Games'
+import * as gameService from '../../services/gameService'
 
 
 
@@ -26,7 +27,12 @@ const GameDetails = (props) => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    props.handleAddGame(formData)
+    handleAddGame(formData)
+  }
+  const handleAddGame = async () => {
+    const newGame = await gameService.handleAddGame(gameName.id)
+    setGame(newGame)
+    console.log(newGame)
   }
 
   useEffect(() => {
@@ -38,6 +44,7 @@ const GameDetails = (props) => {
 
   },[gameName])
   
+
   return (
     <>
     { game.description ? 
@@ -60,8 +67,12 @@ const GameDetails = (props) => {
         className={styles.GameDetails} 
         autoComplete="off"
         onSubmit={handleSubmit}
+        value={formData.gameCollection}
+        onChange={handleChange}
       >
-      <button className="btn btn-secondary" type='submit'>Add to Collection
+      <button className="btn btn-secondary"
+          onClick={()=> handleAddGame(game.id)}
+      >Add to Collection
         </button>
       </form>
     </div>
