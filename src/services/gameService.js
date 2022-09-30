@@ -18,6 +18,7 @@ async function getGameDetails(gameData) {
   return res.json()
 }
 
+
 export {
   searchGame,
   getGameDetails,

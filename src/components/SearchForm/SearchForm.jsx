@@ -9,11 +9,11 @@ const SearchForm = (props) => {
   })
   const [ref, { width }] = useMeasure()
 
-  const searchBar = !props.isBlurred
+  const searchBar = props.isBlurred
 
   const searchStyle = useSpring({ 
     width: searchBar ? (width + 80) : 0,
-    overflow: "hidden",
+    transform: searchBar ? "translateX(300)" : "translateX(-300%)",
   })
 
   function onChange(evt) {
@@ -34,15 +34,15 @@ const SearchForm = (props) => {
       <div>
         <form onSubmit={handleSubmit}>
           <animated.div style={searchStyle} className={styles.animatedDiv}>
-          <input
-            ref={ref}  
-            className={styles.gameSearch}
-            name="query" 
-            type="text" 
-            autoComplete="off"
-            value={formData.query}
-            placeholder="Search for a game..."
-            onChange={onChange}
+            <input
+              ref={ref}  
+              className={styles.gameSearch}
+              name="query" 
+              type="text" 
+              autoComplete="off"
+              value={formData.query}
+              placeholder="Search for a game..."
+              onChange={onChange}
             />
           </animated.div>
         </form>
@@ -50,5 +50,5 @@ const SearchForm = (props) => {
     </>
   );
 }
- 
+
 export default SearchForm;

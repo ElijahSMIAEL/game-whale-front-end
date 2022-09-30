@@ -35,7 +35,6 @@ async function changeProfile(formData, profileId) {
 }
 
 async function handleAddGame(game, profileId) {
-  console.log(game)
   const res = await fetch(`${BASE_URL}/${profileId}/add-game`, {
     method: 'PATCH',
     headers: {

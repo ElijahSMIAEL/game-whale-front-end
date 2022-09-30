@@ -59,7 +59,7 @@ const ProfileSettings = (props) => {
         <input 
           type="text"
           className={styles.nameInput}
-          autocomplete="off"
+          autoComplete="off"
           name='name'
           value={name}
           onChange={handleProfileChange}
