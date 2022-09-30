@@ -4,15 +4,8 @@ import { useEffect, useState } from 'react'
 import * as profileService from '../../services/profileService'
 
 const ProfileList = props => {
-  const [profiles, setProfiles] = useState([])
-
-  useEffect(() => {
-    const fetchProfiles = async () => {
-      const profileData = await profileService.getAllProfiles()
-      setProfiles(profileData)
-    }
-    fetchProfiles()
-  }, [])
+  
+  const profiles = props.profiles
 
   return (
     <>

@@ -7,14 +7,53 @@ import { useLocation } from 'react-router-dom'
 import parse, { attributesToProps } from 'html-react-parser'
 import Platforms from '../../components/Platforms/Platforms'
 import Games from '../Games/Games'
+import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import * as profileService from '../../services/profileService'
+import * as gameService from '../../services/gameService'
+
 
 
 
 const GameDetails = (props) => {
   const [game, setGame] = useState({})
+  const [playedBy, setPlayedBy] = useState([])
   const gameName = useLocation()
-  const profile = props.user.profile
+  const profiles = props.profiles
+  const profile = profiles.find(p =>  p._id === props.user.profile)
+
+  // function check(player) {
+  //   return player?.gameCollection.forEach((collected) => {
+  //     if (parseInt(collected) === game.id & !playedBy.some(play => {
+  //       return play === player
+  //     })) {
+  //       playedBy.push(player)
+  //       console.log(playedBy)
+  //     } else {
+  //       return
+  //     }
+  // })
+  // }
+
+  // function loadPlayers() {
+  //   profiles.forEach(player => check(player))
+  // }
+
+  useEffect(() => {
+    function loadPlayers() {
+      profiles.forEach(player => {
+        player?.gameCollection.forEach((collected) => {
+          if (parseInt(collected) === game.id & !playedBy.some(play => {
+            return play === player
+          })) {
+            setPlayedBy([...playedBy, player])
+          } else {
+            return
+          }
+        })
+      })
+    }
+    loadPlayers()
+  }, [game.id, playedBy, profiles])
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -26,7 +65,14 @@ const GameDetails = (props) => {
   },[gameName])
   
   const handleAddGame = async () => {
-  const newGame = await profileService.handleAddGame(game, profile)
+    profileService.handleAddGame(game, profile._id)
+    if (!playedBy.some(play => {
+      return play === profile._id
+    })) {
+      setPlayedBy([...playedBy, profile])
+    } else {
+      return
+    }
   }
   
   return (
@@ -52,6 +98,19 @@ const GameDetails = (props) => {
       >
         Add to Collection
       </button>
+      { playedBy.length ? 
+        <div>
+        <h1>I am here my G</h1>
+        {playedBy.map(profile =>
+          <ProfileCard
+          key={profile._id}
+          profile={profile}
+          />
+          )}
+        </div>
+        :
+        <h1>LOADING...</h1>
+      }
     </div>
     :
     <h1>LOADING...</h1>

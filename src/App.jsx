@@ -16,9 +16,18 @@ import GameDetails from './pages/GameDetails/GameDetails'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [game,setGame] = useState({})
+  const [profiles, setProfiles] = useState([])
   const [isBlurred, setIsBlurred] = useState(false)
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      const profileData = await profileService.getAllProfiles()
+      setProfiles(profileData)
+    }
+    fetchProfiles()
+  }, [])
+  
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -28,16 +37,6 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
-
-  const [profiles, setProfiles] = useState([])
-
-  useEffect(() => {
-    const fetchProfiles = async () => {
-      const profileData = await profileService.getAllProfiles()
-      setProfiles(profileData)
-    }
-    fetchProfiles()
-  }, [])
 
   return (
     <>
@@ -66,7 +65,7 @@ const App = () => {
         />
           <Route
           path="/games/:id"
-          element={<GameDetails  user={user}/>}
+          element={<GameDetails profiles={profiles} user={user}/>}
         />
         <Route
           path="/profile"
