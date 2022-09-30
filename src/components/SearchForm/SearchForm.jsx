@@ -7,13 +7,12 @@ const SearchForm = (props) => {
   const [formData, setFormData] = useState({
     query: '',
   })
-  const [ref, { width }] = useMeasure()
 
-  const searchBar = props.isBlurred
+
+  const searchBar = !props.isBlurred
 
   const searchStyle = useSpring({ 
-    width: searchBar ? (width + 80) : 0,
-    transform: searchBar ? "translateX(300)" : "translateX(-300%)",
+    transform: searchBar ? "translateX(-166vw)" : "translateX(166vw)",
   })
 
   function onChange(evt) {
@@ -34,8 +33,7 @@ const SearchForm = (props) => {
       <div>
         <form onSubmit={handleSubmit}>
           <animated.div style={searchStyle} className={styles.animatedDiv}>
-            <input
-              ref={ref}  
+            <input  
               className={styles.gameSearch}
               name="query" 
               type="text" 
