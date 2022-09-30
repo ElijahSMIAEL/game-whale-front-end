@@ -1,7 +1,7 @@
 .gameSearch {
   font-size: 1.5rem;
   text-align: center;
-  margin-left: 59px;
+  margin-left: 0px;
   border-radius: 30px;
   border: solid 3px #002c66;
   position: sticky;
@@ -14,7 +14,7 @@
 
 .animatedDiv {
   position: fixed;
-  left: 30vw;
+  left: 200vw;
   top: 1vh;
   
 }

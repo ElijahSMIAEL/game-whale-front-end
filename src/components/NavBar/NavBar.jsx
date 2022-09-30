@@ -74,6 +74,8 @@ const NavBar = ({ user, handleLogout, setIsBlurred, isBlurred }) => {
               <FontAwesomeIcon icon={faChevronCircleRight} style={{
                 height: "45px",
                 color: '#002c66',
+                border: isBlurred ? 'solid 2px white' : 'none' ,
+                borderRadius: '50%' 
               }}/>
             </animated.div>
             
