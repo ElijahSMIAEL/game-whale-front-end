@@ -12,10 +12,11 @@ import AllPosts from './pages/AllPosts/AllPosts'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import GameDetails from './pages/GameDetails/GameDetails'
+import * as postService from './services/postService'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
-  const [game,setGame] = useState({})
+  const [posts, setPosts] = useState([])
   const [profiles, setProfiles] = useState([])
   const [isBlurred, setIsBlurred] = useState(false)
   const navigate = useNavigate()
@@ -38,6 +39,11 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  const handleAddPost = async (postData, photo) => {
+    const newPost = await postService.create(postData)
+    setPosts([...posts, newPost])
+  }
+
   return (
     <>
       <NavBar isBlurred={isBlurred} setIsBlurred={setIsBlurred} user={user} handleLogout={handleLogout} />
@@ -57,7 +63,7 @@ const App = () => {
         />
         <Route
           path="/addPost"
-          element={user ? <AddPost /> : <Navigate to="/login" />}
+          element={user ? <AddPost handleAddPost={handleAddPost} user={user} profiles={profiles}/> : <Navigate to="/login" />}
         />
         <Route
           path="/games"
