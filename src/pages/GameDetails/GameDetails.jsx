@@ -9,7 +9,6 @@ import Platforms from '../../components/Platforms/Platforms'
 import Games from '../Games/Games'
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import * as profileService from '../../services/profileService'
-import * as gameService from '../../services/gameService'
 
 
 
